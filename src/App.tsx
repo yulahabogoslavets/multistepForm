@@ -3,8 +3,6 @@ import { Step1 } from './components/MultipartForm/Step1';
 import { Step2 } from './components/MultipartForm/Step2';
 import { Step3 } from './components/MultipartForm/Step3';
 
-import './App.css';
-
 function App() {
   const [step, setStep] = useState(1);
   const [formdata, setFormdata] = useState({
