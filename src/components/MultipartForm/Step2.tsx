@@ -1,43 +1,30 @@
-interface Step2Props {
-    prevStep: () => void
-    nextStep: () => void
-    onInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-    values: {
-        street: string
-        town: string
-        zip: string
-    }
-}
+import { isValidStringField, isValidZip } from '../../utils/validation'
+import type { Step2Props } from '../types/Interface.types'
 
 export function Step2({
     prevStep,
     nextStep,
     onInputChange,
     values,
+    streetRef,
+    townRef,
+    zipRef,
 }: Step2Props) {
-    // Allow letters, numbers, dashes, spaces
-    const allowedChars = /^[A-Za-zÄäÖöÜüß0-9\- ]+$/
-    const countLetters = (str: string) =>
-        (str.match(/[A-Za-zÄäÖöÜüß]/g) || []).length
-
-    const isStreetValid =
-        allowedChars.test(values.street.trim()) &&
-        countLetters(values.street.trim()) >= 3
-    const isTownValid =
-        allowedChars.test(values.town.trim()) &&
-        countLetters(values.town.trim()) >= 2
-    const isZipValid = /^[0-9]{5}$/.test(values.zip.trim())
+    const isStreetValid = isValidStringField(values.street, 3)
+    const isTownValid = isValidStringField(values.town, 2)
+    const isZipValid = isValidZip(values.zip)
 
     const isDisabled = !isStreetValid || !isTownValid || !isZipValid
     return (
         <>
-            <form>
-                <fieldset className='fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4'>
+            <form className='p-4'>
+                <fieldset className='fieldset bg-base-200 border-base-300 rounded-box max-w-xs border p-4'>
                     <legend className='fieldset-legend'>Address</legend>
 
                     <label className='floating-label' id='street-label'>
                         <span>Street</span>
                         <input
+                            ref={streetRef}
                             type='text'
                             className='input mb-4 validator'
                             placeholder='Street'
@@ -60,6 +47,7 @@ export function Step2({
                     <label className='floating-label' id='town-label'>
                         <span>Town</span>
                         <input
+                            ref={townRef}
                             type='text'
                             className='input mb-4 validator'
                             placeholder='Town'
@@ -82,6 +70,7 @@ export function Step2({
                     <label className='floating-label' id='zip-label'>
                         <span>Zip</span>
                         <input
+                            ref={zipRef}
                             type='text'
                             className='input validator'
                             placeholder='Zip'
@@ -103,7 +92,7 @@ export function Step2({
                     </label>
                 </fieldset>
             </form>
-            <div className='flex justify-between items-center gap-4 mt-4'>
+            <div className='flex flex-col lg:flex-row justify-between items-center gap-4 mt-4'>
                 <button
                     onClick={prevStep}
                     className='btn btn-outline btn-neutral'
