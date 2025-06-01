@@ -4,5 +4,5 @@
 @custom-variant hocus (&:hover, &:focus);
 
 body {
-    @apply flex flex-col items-center justify-center min-h-screen;
+    @apply flex min-h-screen flex-col items-center justify-center;
 }

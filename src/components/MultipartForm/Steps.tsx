@@ -4,17 +4,19 @@ type StepsProps = {
 
 export function Steps({ step }: StepsProps) {
     return (
-        <ul className='steps steps-horizontal p-4 w-full'>
-            <li className={`step text-xs ${step >= 1 ? 'step-success' : ''}`}>
-                <span className={step === 1 ? 'font-bold' : ''}>
+        <ul className="steps steps-horizontal w-full p-4">
+            <li className={`step text-xs ${step >= 1 ? 'step-secondary' : ''}`}>
+                <span className={`mt-2 ${step === 1 ? 'font-bold' : ''}`}>
                     Personal data
                 </span>
             </li>
-            <li className={`step text-xs ${step >= 2 ? 'step-success ' : ''}`}>
-                <span className={step === 2 ? 'font-bold' : ''}>Address</span>
+            <li className={`step text-xs ${step >= 2 ? 'step-secondary' : ''}`}>
+                <span className={`mt-2 ${step === 2 ? 'font-bold' : ''}`}>
+                    Address
+                </span>
             </li>
-            <li className={`step text-xs ${step >= 3 ? 'step-success' : ''}`}>
-                <span className={step === 3 ? 'font-bold' : ''}>
+            <li className={`step text-xs ${step >= 3 ? 'step-secondary' : ''}`}>
+                <span className={`mt-2 ${step === 3 ? 'font-bold' : ''}`}>
                     Confirm date
                 </span>
             </li>
