@@ -1,54 +1,55 @@
-# React + TypeScript + Vite
+# Multi-Step Form
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a modern multi-step form application built with **React** and **TypeScript**. It uses **Vite** as the build tool, and is styled with **Tailwind CSS** and **daisyUI**.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Multi-step form:** The form is divided into three steps – personal data, address, and confirmation.
+- **Form validation:** Client-side validation for fields (e.g., email, postal code, minimum character length).
+- **User-friendly navigation:** Users can move forward and backward between steps and edit individual fields.
+- **Accessibility:** Focus management and ARIA labels for improved accessibility.
+- **Modern UI:** Styled with Tailwind CSS and daisyUI components.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Install dependencies**
 
-```js
-export default tseslint.config({
-    extends: [
-        // Remove ...tseslint.configs.recommended and replace with this
-        ...tseslint.configs.recommendedTypeChecked,
-        // Alternatively, use this for stricter rules
-        ...tseslint.configs.strictTypeChecked,
-        // Optionally, add this for stylistic rules
-        ...tseslint.configs.stylisticTypeChecked,
-    ],
-    languageOptions: {
-        // other options...
-        parserOptions: {
-            project: ['./tsconfig.node.json', './tsconfig.app.json'],
-            tsconfigRootDir: import.meta.dirname,
-        },
-    },
-})
-```
+    ```
+    npm install
+    ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Start development server**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+    ```
+    npm run dev
+    ```
 
-export default tseslint.config({
-    plugins: {
-        // Add the react-x and react-dom plugins
-        'react-x': reactX,
-        'react-dom': reactDom,
-    },
-    rules: {
-        // other rules...
-        // Enable its recommended typescript rules
-        ...reactX.configs['recommended-typescript'].rules,
-        ...reactDom.configs.recommended.rules,
-    },
-})
-```
+3. **Build for production**
+
+    ```
+    npm run build
+    ```
+
+4. **Run linter**
+    ```
+    npm run lint
+    ```
+5. **Run prettier format**
+    ```
+    npm run format
+    ```
+
+## Key Files
+
+- [`src/App.tsx`](src/App.tsx): Controls the form steps and holds the state.
+- [`src/components/MultipartForm/Step1.tsx`](src/components/MultipartForm/Step1.tsx), [`Step2.tsx`](src/components/MultipartForm/Step2.tsx), [`Step3.tsx`](src/components/MultipartForm/Step3.tsx): The individual form steps.
+- [`src/utils/validation.ts`](src/utils/validation.ts): Field validation functions.
+- [`src/components/types/Interface.types.ts`](src/components/types/Interface.types.ts): Type definitions for component props.
+
+## Technologies
+
+- **React 19**
+- **TypeScript**
+- **Vite**
+- **Tailwind CSS**
+- **daisyUI**
